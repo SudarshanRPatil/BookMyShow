@@ -4,6 +4,8 @@ namespace BookMyShow.Entities
     {
         Comedy,
         Drama,
-        Horror
+        Horror,
+        Action,
+        Adventure
     }
 }

@@ -45,6 +45,7 @@
     <Compile Include="Auditorium.cs" />
     <Compile Include="AuditoriumRow.cs" />
     <Compile Include="AuditoriumSpace.cs" />
+    <Compile Include="CensorRating.cs" />
     <Compile Include="Duration.cs" />
     <Compile Include="Director.cs" />
     <Compile Include="EmptySpace.cs" />

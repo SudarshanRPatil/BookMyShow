@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using BookMyShow.Entities;
 
 namespace BookMyShow.Filters
@@ -8,7 +9,7 @@ namespace BookMyShow.Filters
     {
         public List<Show> Filter(List<Show> shows, string value)
         {
-            throw new NotImplementedException();
+            return shows.Where(show => show.Language.Equals(value, StringComparison.CurrentCultureIgnoreCase)).ToList();
         }
     }
 }
