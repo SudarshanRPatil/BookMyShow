@@ -5,11 +5,17 @@ using BookMyShow.Entities;
 
 namespace BookMyShow.Filters
 {
-    public class LanguageFilter : IFilter
+    public class LanguageFilter : IFilter<List<Show>>
     {
-        public List<Show> Filter(List<Show> shows, string value)
+        public string Value { get; set; }
+
+        public List<Show> Apply(List<Show> shows)
         {
-            return shows.Where(show => show.Language.Equals(value, StringComparison.CurrentCultureIgnoreCase)).ToList();
+            if (shows == null || shows.Any() == false)
+            {
+                return shows;
+            }
+            return shows.Where(show => show.Language.Equals(this.Value, StringComparison.CurrentCultureIgnoreCase)).ToList();
         }
     }
 }

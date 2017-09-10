@@ -259,9 +259,9 @@ namespace BookMyShowTestProject
             movies.Add(movie2);
             movies.Add(movie3);
 
-            FilterBuilder filterBuilder = FilterBuilder.GetInstance();
+            ObjectBuilder<IFilter<List<Show>>> filterBuilder = ObjectBuilder<IFilter<List<Show>>>.GetInstance();
             filterBuilder.Register("Language",new LanguageFilter());
-            List<Show> filterShows = filterBuilder.Get("Language").Filter(listshows, "hindi");
+            List<Show> filterShows = filterBuilder.Get("Language").Apply(listshows);
             foreach (var filterShow in filterShows)
             {
                 Assert.AreEqual(filterShow.Language.ToLower(), "hindi");

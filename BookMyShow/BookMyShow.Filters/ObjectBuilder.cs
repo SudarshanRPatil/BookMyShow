@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace BookMyShow.Filters
 {
-    public sealed class FilterBuilder
+    public sealed class ObjectBuilder<T>
     {
-        private FilterBuilder()
+        private ObjectBuilder()
         {
         }
 
-        private Dictionary<string, IFilter> _mapping;
+        private Dictionary<string, T> _mapping;
 
-        private static FilterBuilder _object;
+        private static ObjectBuilder<T> _object;
         private static readonly object Lock = new object();
-        public static FilterBuilder GetInstance()
+        public static ObjectBuilder<T> GetInstance()
         {
             if (_object == null)
             {
@@ -24,24 +24,24 @@ namespace BookMyShow.Filters
                 lock (Lock)
                 {
                     if (_object == null)
-                        _object = new FilterBuilder();
+                        _object = new ObjectBuilder<T>();
                 }
             }
             return _object;
         }
 
-        public void Register(string name, IFilter filter)
+        public void Register(string name, T obj)
         {
-            if (_mapping == null) _mapping = new Dictionary<string, IFilter>();
+            if (_mapping == null) _mapping = new Dictionary<string, T>();
 
-            _mapping[GetKey(name)] = filter;
+            _mapping[GetKey(name)] = obj;
         }
 
         private string GetKey(string name)
         {
             return name.ToLowerInvariant();
         }
-        public IFilter Get(string name)
+        public T Get(string name)
         {
             if (_mapping.ContainsKey(GetKey(name)))
                 return _mapping[GetKey(name)];

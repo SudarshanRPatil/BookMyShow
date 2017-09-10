@@ -3,8 +3,10 @@ using BookMyShow.Entities;
 
 namespace BookMyShow.Filters
 {
-    public interface IFilter
+    public interface IFilter<T>
     {
-        List<Show> Filter(List<Show> shows, string value);
+        string Value { get; set; }
+
+        T Apply(T shows);
     }
 }

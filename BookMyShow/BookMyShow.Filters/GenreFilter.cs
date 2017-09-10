@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace BookMyShow.Filters
 {
-    public class GenreFilter : IFilter
+    public class GenreFilter : IFilter<List<Show>>
     {
-        public List<Show> Filter(List<Show> shows, string value)
+        public string Value { get; set; }
+        public List<Show> Apply(List<Show> shows)
         {
             throw new NotImplementedException();
         }

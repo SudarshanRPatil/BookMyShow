@@ -40,13 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FilterPipeline.cs" />
     <Compile Include="GenreFilter.cs" />
-    <Compile Include="FilterBuilder.cs" />
+    <Compile Include="ObjectBuilder.cs" />
     <Compile Include="IFilter.cs" />
     <Compile Include="ISearch.cs" />
     <Compile Include="LanguageFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchCriteria.cs" />
+    <Compile Include="Searcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookMyShow.Entities\BookMyShow.Entities.csproj">
